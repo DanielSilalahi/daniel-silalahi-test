@@ -1,15 +1,26 @@
 package com.allobank.allobackendtest.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Entity
 public class Dapil {
-    private UUID id;
-    private String namaDapil;
-    private String provinsi;
-    private List<String> wilayahDapilList;
-    private int jumlahKursi;
+    @jakarta.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+    private String nama;
 }

@@ -1,12 +1,26 @@
 package com.allobank.allobackendtest.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.UUID;
 
-@Data
+@Entity
 public class Partai {
-    private UUID id;
-    private String namaPartai;
-    private Integer nomorUrut;
+    @jakarta.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
+    private Long id;
+
+    public long getId() {
+        return id;
+    }
+    private String nama;
+
 }
